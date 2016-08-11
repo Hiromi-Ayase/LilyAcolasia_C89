@@ -105,7 +105,10 @@ public class GameMaster : MonoBehaviour
     {
 		int rand;
 		bool rev = false;
-		if (PlayerPrefs.GetInt("network", 0) != 0) {
+		int isOnline = PlayerPrefs.GetInt ("network", 0);
+		Debug.Log ("isOnline" + isOnline);
+
+		if (isOnline != 0) {
 			this.netuser = NetworkStart.user;
 			if (this.netuser.IsServer) {
 				rev = true;
@@ -138,11 +141,13 @@ public class GameMaster : MonoBehaviour
 
 
 	void OnApplicationQuit() {
-		this.netuser.Close ();
-		if (this.netuser.lt != null)
-			this.netuser.lt.Abort ();
-		if (this.netuser.rt != null)
-			this.netuser.rt.Abort ();
+		if (this.netuser != null) {
+			this.netuser.Close ();
+			if (this.netuser.lt != null)
+				this.netuser.lt.Abort ();
+			if (this.netuser.rt != null)
+				this.netuser.rt.Abort ();
+		}
 	}
 
 	void Update ()
@@ -187,6 +192,8 @@ public class GameMaster : MonoBehaviour
 						key = "warfare";
 					} else if (level == 1) {
 						key = "mimic";
+					} else if (level == 0) {
+						key = "human";
 					} else {
 						key = "Enemy";
 					}
@@ -223,6 +230,7 @@ public class GameMaster : MonoBehaviour
             {
                 CameraFade.StartAlphaFade(Color.black, false, 0.5f, 0.5f, () =>
                 {
+					if (this.netuser != null)
 						this.netuser.Close ();
                     SceneManager.LoadScene("Title");
                 });

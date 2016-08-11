@@ -17,6 +17,8 @@ public class MenuItem : MonoBehaviour
 
 	void OnMouseDown()
     {
+    
+		PlayerPrefs.SetInt("network", 0);
         if (this.name == "WarfareArea")
         {
             this.audioSource.clip = soundSelect;

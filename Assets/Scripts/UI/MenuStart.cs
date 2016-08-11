@@ -63,16 +63,16 @@ public class MenuStart : MonoBehaviour {
                 menuMain.SetActive(true);
 
                 warfareWin.Number = PlayerPrefs.GetInt("warfareWin", 0);
-                warfareLost.Number = PlayerPrefs.GetInt("warfareLost", 0);
-                warfareDraw.Number = PlayerPrefs.GetInt("warfareDraw", 0);
+                //warfareLost.Number = PlayerPrefs.GetInt("warfareLost", 0);
+                //warfareDraw.Number = PlayerPrefs.GetInt("warfareDraw", 0);
 
-				mimicWin.Number = PlayerPrefs.GetInt("mimicWin", 0);
-				mimicLost.Number = PlayerPrefs.GetInt("mimicLost", 0);
-				mimicDraw.Number = PlayerPrefs.GetInt("mimicDraw", 0);
+				//mimicWin.Number = PlayerPrefs.GetInt("mimicWin", 0);
+				//mimicLost.Number = PlayerPrefs.GetInt("mimicLost", 0);
+				//mimicDraw.Number = PlayerPrefs.GetInt("mimicDraw", 0);
 
 				humanWin.Number = PlayerPrefs.GetInt("humanWin", 0);
-				humanLost.Number = PlayerPrefs.GetInt("humanLost", 0);
-				humanDraw.Number = PlayerPrefs.GetInt("humanDraw", 0);
+				//humanLost.Number = PlayerPrefs.GetInt("humanLost", 0);
+				//humanDraw.Number = PlayerPrefs.GetInt("humanDraw", 0);
 
                 Debug.Log(warfareLost.Number);
                 this.state = 2;

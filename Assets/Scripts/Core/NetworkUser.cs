@@ -276,8 +276,12 @@ namespace LilyAcolasia
 			this.lt.Start();
 		}
 		private void Dispatch() {
-			client = listener.Accept ();
-			listener.Close ();
+			try {
+				client = listener.Accept ();
+				listener.Close ();
+			} catch (SocketException e) {
+				Debug.Log ("NetworkUser exception:" + e);
+			}
 		}
 
         private static Socket connectServer(string host, int port)
