@@ -1,0 +1,1327 @@
+fileFormatVersion: 2
+guid: 0e8ae3b0c857e7e458389685310a0db0
+timeCreated: 1470976068
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: font_48x48_0
+    21300002: font_48x48_1
+    21300004: font_48x48_2
+    21300006: font_48x48_3
+    21300008: font_48x48_4
+    21300010: font_48x48_5
+    21300012: font_48x48_6
+    21300014: font_48x48_7
+    21300016: font_48x48_8
+    21300018: font_48x48_9
+    21300020: font_48x48_10
+    21300022: font_48x48_11
+    21300024: font_48x48_12
+    21300026: font_48x48_13
+    21300028: font_48x48_14
+    21300030: font_48x48_15
+    21300032: font_48x48_16
+    21300034: font_48x48_17
+    21300036: font_48x48_18
+    21300038: font_48x48_19
+    21300040: font_48x48_20
+    21300042: font_48x48_21
+    21300044: font_48x48_22
+    21300046: font_48x48_23
+    21300048: font_48x48_24
+    21300050: font_48x48_25
+    21300052: font_48x48_26
+    21300054: font_48x48_27
+    21300056: font_48x48_28
+    21300058: font_48x48_29
+    21300060: font_48x48_30
+    21300062: font_48x48_31
+    21300064: font_48x48_32
+    21300066: font_48x48_33
+    21300068: font_48x48_34
+    21300070: font_48x48_35
+    21300072: font_48x48_36
+    21300074: font_48x48_37
+    21300076: font_48x48_38
+    21300078: font_48x48_39
+    21300080: font_48x48_40
+    21300082: font_48x48_41
+    21300084: font_48x48_42
+    21300086: font_48x48_43
+    21300088: font_48x48_44
+    21300090: font_48x48_45
+    21300092: font_48x48_46
+    21300094: font_48x48_47
+    21300096: font_48x48_48
+    21300098: font_48x48_49
+    21300100: font_48x48_50
+    21300102: font_48x48_51
+    21300104: font_48x48_52
+    21300106: font_48x48_53
+    21300108: font_48x48_54
+    21300110: font_48x48_55
+    21300112: font_48x48_56
+    21300114: font_48x48_57
+    21300116: font_48x48_58
+    21300118: font_48x48_59
+    21300120: font_48x48_60
+    21300122: font_48x48_61
+    21300124: font_48x48_62
+    21300126: font_48x48_63
+    21300128: font_48x48_64
+    21300130: font_48x48_65
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: font_48x48_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21, y: -19}
+        - {x: -20, y: -21}
+        - {x: 18, y: -21}
+        - {x: 21, y: -20}
+        - {x: 21, y: 20}
+        - {x: 18, y: 21}
+        - {x: -15, y: 21}
+        - {x: -21, y: 5}
+    - name: font_48x48_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20, y: 21}
+        - {x: -20, y: -21}
+        - {x: 14, y: -21}
+        - {x: 20, y: -16}
+        - {x: 20, y: 19}
+        - {x: 19, y: 21}
+    - name: font_48x48_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13, y: 21}
+        - {x: -22, y: 18}
+        - {x: -22, y: -14}
+        - {x: -20, y: -21}
+        - {x: 17, y: -21}
+        - {x: 17, y: 21}
+    - name: font_48x48_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20, y: 21}
+        - {x: -20, y: -21}
+        - {x: 13, y: -21}
+        - {x: 21, y: -19}
+        - {x: 21, y: 13}
+        - {x: 15, y: 21}
+    - name: font_48x48_4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 21}
+        - {x: -20, y: 18}
+        - {x: -20, y: -21}
+        - {x: 19, y: -21}
+        - {x: 19, y: 14}
+        - {x: 18, y: 21}
+    - name: font_48x48_5
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 18, y: 19}
+        - {x: 15, y: 21}
+        - {x: -11, y: 21}
+        - {x: -20, y: 16}
+        - {x: -20, y: -17}
+        - {x: -16, y: -21}
+        - {x: -2, y: -21}
+        - {x: 1, y: -20}
+        - {x: 17, y: -16}
+        - {x: 18, y: -11}
+    - name: font_48x48_6
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13, y: 21}
+        - {x: -21, y: 18}
+        - {x: -21, y: -17}
+        - {x: -14, y: -21}
+        - {x: 19, y: -21}
+        - {x: 20, y: -16}
+        - {x: 20, y: 20}
+        - {x: 17, y: 21}
+    - name: font_48x48_7
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19, y: 21}
+        - {x: -19, y: -21}
+        - {x: 16, y: -21}
+        - {x: 19, y: -20}
+        - {x: 19, y: 21}
+    - name: font_48x48_8
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10, y: 21}
+        - {x: -14, y: 16}
+        - {x: -14, y: -17}
+        - {x: -10, y: -21}
+        - {x: 13, y: -21}
+        - {x: 13, y: 21}
+    - name: font_48x48_9
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 11, y: 21}
+        - {x: -6, y: 21}
+        - {x: -19, y: 4}
+        - {x: -19, y: -16}
+        - {x: -18, y: -21}
+        - {x: 9, y: -21}
+        - {x: 17, y: -15}
+        - {x: 17, y: 17}
+    - name: font_48x48_10
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 21}
+        - {x: -20, y: 15}
+        - {x: -20, y: -17}
+        - {x: -14, y: -21}
+        - {x: 16, y: -21}
+        - {x: 19, y: -16}
+        - {x: 19, y: 17}
+        - {x: 15, y: 21}
+    - name: font_48x48_11
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 21}
+        - {x: -19, y: 19}
+        - {x: -19, y: -11}
+        - {x: -18, y: -17}
+        - {x: -15, y: -21}
+        - {x: 15, y: -21}
+        - {x: 18, y: -20}
+        - {x: 18, y: 1}
+        - {x: 6, y: 21}
+    - name: font_48x48_12
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 21, y: 17}
+        - {x: 15, y: 21}
+        - {x: -20, y: 21}
+        - {x: -24, y: 15}
+        - {x: -24, y: -21}
+        - {x: 18, y: -21}
+        - {x: 20, y: -16}
+        - {x: 21, y: -12}
+    - name: font_48x48_13
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 21}
+        - {x: -21, y: 20}
+        - {x: -21, y: -18}
+        - {x: -15, y: -21}
+        - {x: 18, y: -21}
+        - {x: 19, y: -17}
+        - {x: 19, y: 21}
+    - name: font_48x48_14
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18, y: 21}
+        - {x: -22, y: 20}
+        - {x: -22, y: -14}
+        - {x: -14, y: -21}
+        - {x: 18, y: -21}
+        - {x: 20, y: -16}
+        - {x: 20, y: 21}
+    - name: font_48x48_15
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 21}
+        - {x: -20, y: 15}
+        - {x: -20, y: -20}
+        - {x: -18, y: -21}
+        - {x: 6, y: -21}
+        - {x: 20, y: -8}
+        - {x: 20, y: 14}
+        - {x: 18, y: 21}
+    - name: font_48x48_16
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 21}
+        - {x: -22, y: 18}
+        - {x: -22, y: -16}
+        - {x: -21, y: -21}
+        - {x: 17, y: -21}
+        - {x: 21, y: -18}
+        - {x: 21, y: 11}
+        - {x: 15, y: 21}
+    - name: font_48x48_17
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21, y: 21}
+        - {x: -21, y: -21}
+        - {x: 19, y: -21}
+        - {x: 19, y: 15}
+        - {x: 15, y: 21}
+    - name: font_48x48_18
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21, y: 21}
+        - {x: -22, y: 17}
+        - {x: -22, y: -20}
+        - {x: -17, y: -21}
+        - {x: 18, y: -21}
+        - {x: 19, y: -19}
+        - {x: 19, y: 21}
+    - name: font_48x48_19
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 14, y: 21}
+        - {x: -21, y: 21}
+        - {x: -21, y: -6}
+        - {x: -17, y: -20}
+        - {x: -12, y: -21}
+        - {x: 9, y: -21}
+        - {x: 11, y: -18}
+        - {x: 19, y: 0}
+        - {x: 19, y: 20}
+    - name: font_48x48_20
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20, y: 21}
+        - {x: -20, y: -21}
+        - {x: 20, y: -21}
+        - {x: 20, y: 20}
+        - {x: 16, y: 21}
+    - name: font_48x48_21
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19, y: 21}
+        - {x: -22, y: 16}
+        - {x: -22, y: -2}
+        - {x: -13, y: -20}
+        - {x: -10, y: -21}
+        - {x: 10, y: -21}
+        - {x: 20, y: -9}
+        - {x: 20, y: 18}
+        - {x: 15, y: 21}
+    - name: font_48x48_22
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24, y: 21}
+        - {x: -24, y: -13}
+        - {x: -23, y: -19}
+        - {x: -16, y: -21}
+        - {x: 17, y: -21}
+        - {x: 24, y: -15}
+        - {x: 24, y: 21}
+    - name: font_48x48_23
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 21}
+        - {x: -19, y: 18}
+        - {x: -19, y: -18}
+        - {x: -14, y: -21}
+        - {x: 17, y: -21}
+        - {x: 20, y: -16}
+        - {x: 20, y: 20}
+        - {x: 16, y: 21}
+    - name: font_48x48_24
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 16, y: 21}
+        - {x: -17, y: 21}
+        - {x: -20, y: 19}
+        - {x: -20, y: -7}
+        - {x: -18, y: -18}
+        - {x: -11, y: -21}
+        - {x: 12, y: -21}
+        - {x: 19, y: -4}
+        - {x: 19, y: 16}
+    - name: font_48x48_25
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 18, y: 21}
+        - {x: -17, y: 21}
+        - {x: -20, y: 18}
+        - {x: -20, y: -20}
+        - {x: -16, y: -21}
+        - {x: 17, y: -21}
+        - {x: 19, y: -18}
+        - {x: 19, y: 18}
+    - name: font_48x48_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13, y: 16}
+        - {x: -19, y: 12}
+        - {x: -20, y: 10}
+        - {x: -20, y: -16}
+        - {x: -18, y: -21}
+        - {x: 12, y: -21}
+        - {x: 17, y: -19}
+        - {x: 17, y: 11}
+        - {x: 15, y: 16}
+    - name: font_48x48_27
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 14, y: 13}
+        - {x: 7, y: 21}
+        - {x: -15, y: 21}
+        - {x: -19, y: 19}
+        - {x: -19, y: -20}
+        - {x: -15, y: -21}
+        - {x: 14, y: -21}
+        - {x: 17, y: -19}
+        - {x: 18, y: -15}
+        - {x: 18, y: 7}
+    - name: font_48x48_28
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -20, y: 13}
+        - {x: -20, y: -14}
+        - {x: -18, y: -21}
+        - {x: 15, y: -21}
+        - {x: 15, y: 16}
+    - name: font_48x48_29
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13, y: 21}
+        - {x: -18, y: 12}
+        - {x: -18, y: -20}
+        - {x: -16, y: -21}
+        - {x: 16, y: -21}
+        - {x: 19, y: -17}
+        - {x: 19, y: 16}
+        - {x: 18, y: 21}
+    - name: font_48x48_30
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7, y: 16}
+        - {x: -13, y: 15}
+        - {x: -18, y: 13}
+        - {x: -18, y: -15}
+        - {x: -17, y: -21}
+        - {x: 13, y: -21}
+        - {x: 17, y: -17}
+        - {x: 17, y: 13}
+        - {x: 13, y: 16}
+    - name: font_48x48_31
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -11, y: 21}
+        - {x: -13, y: 19}
+        - {x: -17, y: 13}
+        - {x: -17, y: -13}
+        - {x: -12, y: -21}
+        - {x: 10, y: -21}
+        - {x: 16, y: -8}
+        - {x: 16, y: 21}
+    - name: font_48x48_32
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15, y: 16}
+        - {x: -20, y: 11}
+        - {x: -20, y: -24}
+        - {x: 14, y: -24}
+        - {x: 17, y: -19}
+        - {x: 17, y: 15}
+        - {x: 13, y: 16}
+    - name: font_48x48_33
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 10, y: 21}
+        - {x: -18, y: 21}
+        - {x: -18, y: -21}
+        - {x: 18, y: -21}
+        - {x: 18, y: 6}
+        - {x: 15, y: 20}
+    - name: font_48x48_34
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 11, y: 22}
+        - {x: -10, y: 22}
+        - {x: -14, y: 20}
+        - {x: -14, y: -17}
+        - {x: -8, y: -21}
+        - {x: 4, y: -21}
+        - {x: 9, y: -20}
+        - {x: 13, y: -15}
+        - {x: 13, y: 18}
+    - name: font_48x48_35
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12, y: 22}
+        - {x: -17, y: 5}
+        - {x: -17, y: -24}
+        - {x: 12, y: -24}
+        - {x: 13, y: -23}
+        - {x: 13, y: 18}
+        - {x: 12, y: 22}
+    - name: font_48x48_36
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19, y: 21}
+        - {x: -19, y: -21}
+        - {x: 11, y: -21}
+        - {x: 17, y: -20}
+        - {x: 17, y: 13}
+        - {x: 8, y: 21}
+    - name: font_48x48_37
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: -15}
+        - {x: -11, y: -21}
+        - {x: 13, y: -21}
+        - {x: 16, y: -20}
+        - {x: 16, y: 11}
+        - {x: 14, y: 16}
+        - {x: 11, y: 21}
+        - {x: -10, y: 21}
+        - {x: -14, y: 19}
+    - name: font_48x48_38
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19, y: 16}
+        - {x: -22, y: 15}
+        - {x: -22, y: -18}
+        - {x: -17, y: -21}
+        - {x: 18, y: -21}
+        - {x: 22, y: -17}
+        - {x: 22, y: 13}
+        - {x: 19, y: 16}
+    - name: font_48x48_39
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18, y: 16}
+        - {x: -18, y: -19}
+        - {x: -16, y: -21}
+        - {x: 16, y: -21}
+        - {x: 18, y: -20}
+        - {x: 18, y: 15}
+        - {x: 15, y: 16}
+    - name: font_48x48_40
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 16}
+        - {x: -19, y: 11}
+        - {x: -19, y: -19}
+        - {x: -11, y: -21}
+        - {x: 15, y: -21}
+        - {x: 18, y: -15}
+        - {x: 18, y: 16}
+    - name: font_48x48_41
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 16}
+        - {x: -19, y: 12}
+        - {x: -19, y: -24}
+        - {x: 12, y: -24}
+        - {x: 18, y: -18}
+        - {x: 18, y: 10}
+        - {x: 16, y: 16}
+    - name: font_48x48_42
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19, y: 16}
+        - {x: -19, y: -16}
+        - {x: -15, y: -24}
+        - {x: 18, y: -24}
+        - {x: 18, y: 16}
+    - name: font_48x48_43
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 10, y: 16}
+        - {x: -16, y: 16}
+        - {x: -18, y: 10}
+        - {x: -18, y: -17}
+        - {x: -16, y: -21}
+        - {x: 6, y: -21}
+        - {x: 15, y: -7}
+        - {x: 15, y: 12}
+    - name: font_48x48_44
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 16}
+        - {x: -19, y: 14}
+        - {x: -19, y: -18}
+        - {x: -15, y: -21}
+        - {x: 17, y: -21}
+        - {x: 17, y: 12}
+        - {x: 16, y: 16}
+    - name: font_48x48_45
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -11, y: 21}
+        - {x: -18, y: 13}
+        - {x: -18, y: -7}
+        - {x: -15, y: -16}
+        - {x: -8, y: -21}
+        - {x: 11, y: -21}
+        - {x: 15, y: -15}
+        - {x: 15, y: 12}
+        - {x: 5, y: 21}
+    - name: font_48x48_46
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15, y: 16}
+        - {x: -18, y: 15}
+        - {x: -18, y: -16}
+        - {x: -13, y: -21}
+        - {x: 13, y: -21}
+        - {x: 18, y: -17}
+        - {x: 18, y: 13}
+        - {x: 16, y: 16}
+    - name: font_48x48_47
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18, y: 16}
+        - {x: -19, y: 15}
+        - {x: -19, y: -10}
+        - {x: -10, y: -21}
+        - {x: 10, y: -21}
+        - {x: 16, y: -13}
+        - {x: 19, y: -1}
+        - {x: 19, y: 16}
+    - name: font_48x48_48
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22, y: 16}
+        - {x: -23, y: 15}
+        - {x: -23, y: -8}
+        - {x: -18, y: -21}
+        - {x: 21, y: -21}
+        - {x: 23, y: -9}
+        - {x: 23, y: 14}
+        - {x: 20, y: 16}
+    - name: font_48x48_49
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15, y: 16}
+        - {x: -18, y: 11}
+        - {x: -18, y: -18}
+        - {x: -16, y: -21}
+        - {x: 14, y: -21}
+        - {x: 17, y: -20}
+        - {x: 17, y: 12}
+        - {x: 12, y: 16}
+    - name: font_48x48_50
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -18, y: 15}
+        - {x: -18, y: -23}
+        - {x: -16, y: -24}
+        - {x: 16, y: -24}
+        - {x: 18, y: -23}
+        - {x: 18, y: 12}
+        - {x: 17, y: 16}
+    - name: font_48x48_51
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 11, y: 16}
+        - {x: -15, y: 16}
+        - {x: -18, y: 13}
+        - {x: -18, y: -15}
+        - {x: -17, y: -21}
+        - {x: 17, y: -21}
+        - {x: 17, y: 13}
+    - name: font_48x48_52
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 22}
+        - {x: -22, y: 18}
+        - {x: -22, y: -20}
+        - {x: 21, y: -20}
+        - {x: 21, y: 19}
+        - {x: 20, y: 22}
+    - name: font_48x48_53
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 17, y: 22}
+        - {x: -21, y: 22}
+        - {x: -21, y: -16}
+        - {x: -16, y: -20}
+        - {x: 17, y: -20}
+        - {x: 20, y: -17}
+        - {x: 20, y: 9}
+        - {x: 19, y: 19}
+    - name: font_48x48_54
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22, y: 22}
+        - {x: -22, y: -15}
+        - {x: -17, y: -20}
+        - {x: 17, y: -20}
+        - {x: 21, y: -14}
+        - {x: 21, y: 22}
+    - name: font_48x48_55
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21, y: 22}
+        - {x: -21, y: -20}
+        - {x: 20, y: -20}
+        - {x: 21, y: -19}
+        - {x: 21, y: 18}
+        - {x: 20, y: 22}
+    - name: font_48x48_56
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19, y: 22}
+        - {x: -22, y: 16}
+        - {x: -22, y: -12}
+        - {x: -5, y: -24}
+        - {x: 20, y: -24}
+        - {x: 21, y: -19}
+        - {x: 21, y: 19}
+        - {x: 18, y: 22}
+    - name: font_48x48_57
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22, y: 22}
+        - {x: -22, y: -20}
+        - {x: 21, y: -20}
+        - {x: 21, y: 19}
+        - {x: 16, y: 22}
+    - name: font_48x48_58
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19, y: 22}
+        - {x: -22, y: 16}
+        - {x: -22, y: -16}
+        - {x: -20, y: -20}
+        - {x: 21, y: -20}
+        - {x: 21, y: 17}
+        - {x: 18, y: 22}
+    - name: font_48x48_59
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 22}
+        - {x: -21, y: 19}
+        - {x: -21, y: -5}
+        - {x: -8, y: -20}
+        - {x: 20, y: -20}
+        - {x: 21, y: -14}
+        - {x: 21, y: 20}
+        - {x: 19, y: 22}
+    - name: font_48x48_60
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 22}
+        - {x: -22, y: 18}
+        - {x: -22, y: -20}
+        - {x: 21, y: -20}
+        - {x: 21, y: 19}
+        - {x: 20, y: 22}
+    - name: font_48x48_61
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22, y: 22}
+        - {x: -22, y: -16}
+        - {x: -16, y: -20}
+        - {x: 21, y: -20}
+        - {x: 21, y: 22}
+    - name: font_48x48_62
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 9, y: 17}
+        - {x: -11, y: 17}
+        - {x: -17, y: 10}
+        - {x: -17, y: -8}
+        - {x: -11, y: -17}
+        - {x: 11, y: -17}
+        - {x: 16, y: -10}
+        - {x: 16, y: 10}
+    - name: font_48x48_63
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -4, y: 20}
+        - {x: -21, y: 12}
+        - {x: -21, y: -19}
+        - {x: -18, y: -20}
+        - {x: 4, y: -20}
+        - {x: 18, y: -5}
+        - {x: 19, y: 1}
+        - {x: 19, y: 20}
+    - name: font_48x48_64
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 17}
+        - {x: -17, y: 15}
+        - {x: -17, y: -11}
+        - {x: -15, y: -17}
+        - {x: 16, y: -17}
+        - {x: 17, y: -15}
+        - {x: 17, y: 17}
+    - name: font_48x48_65
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

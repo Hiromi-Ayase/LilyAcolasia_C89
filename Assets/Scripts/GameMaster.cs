@@ -108,7 +108,7 @@ public class GameMaster : MonoBehaviour
 		int isOnline = PlayerPrefs.GetInt ("network", 0);
 		Debug.Log ("isOnline" + isOnline);
 
-		if (isOnline != 0) {
+		if (isOnline != 0 && this.netuser != null) {
 			this.netuser = NetworkStart.user;
 			if (this.netuser.IsServer) {
 				rev = true;
@@ -118,6 +118,9 @@ public class GameMaster : MonoBehaviour
 			this.level = 0;
 		} else {
 			this.level = PlayerPrefs.GetInt("level", 1);
+			if (this.level == 0) {
+				this.level = 1;
+			}
 			this.ai = new LilyAcolasia_AI.AI (this.level);
 			rand = new System.Random ().Next();
 		}

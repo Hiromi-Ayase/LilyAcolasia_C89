@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Text;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
 using UnityEngine.SceneManagement;
@@ -124,8 +125,7 @@ public class NetworkStart : MonoBehaviour {
 		string host;
 		int port;
 
-		long id = 0;
-		Int64.TryParse (net.input.text, out id);
+		string id = net.input.text;
 
 		if (!decode (id, out host, out port)) {
 			net.statusText.text = "Invalid ID!";
@@ -133,7 +133,7 @@ public class NetworkStart : MonoBehaviour {
 			net.statusText.text = "";
 			user = new LilyAcolasia.NetworkUser (host, port, "ClientPlayer");
 			Debug.Log ("Client connecting: " + host + ":" + port);
-			Debug.Log ("E Filed ID: " + net.eFieldId.Number);
+			Debug.Log ("E Filed ID: " + net.eFieldId.Text);
 		}
 	}
 
@@ -152,11 +152,11 @@ public class NetworkStart : MonoBehaviour {
 			}
 			string host = m.Groups [1].Value;
 
-			net.eFieldId.Number = encode(host, port);
+			net.eFieldId.Text = encode(host, port);
 			int rand = new System.Random ().Next ();
 			user = new LilyAcolasia.NetworkUser (port, "ServerPlayer", rand);
 			Debug.Log ("Server waiting: " + host + ":" + port);
-			Debug.Log ("E Filed ID: " + net.eFieldId.Number);
+			Debug.Log ("E Filed ID: " + net.eFieldId.Text);
 
 			net.menuCreate.SetActive (false);
 			net.menuCreate2.SetActive (true);
@@ -164,27 +164,37 @@ public class NetworkStart : MonoBehaviour {
 		}
 	}
 
-	private static long encode(string host, int port) {
-		long id = 0;
+	private static string encode(string host, int port) {
+		byte[] data = new byte[6];
+		int ptr = 0;
 		foreach (string s in host.Split('.')) {
-			id *= 256;
-			id += Int32.Parse (s);
+			int x = Int32.Parse (s);
+			data [ptr++] = (byte)x;
 		}
-		id *= 100000;
-		id += port;
+		data [4] = (byte)(port / 256);
+		data [5] = (byte)(port % 256);
+		string id = Convert.ToBase64String (data);
 		return id;
 	}
 
-	private static bool decode (long id, out string host, out int port) {
-		port = (int)(id % 100000);
-		id /= 100000;
+	private static bool decode (string id, out string host, out int port) {
+		
+		byte[] data;
+		try {
+			data = Convert.FromBase64String (id);
+		} catch {
+			host = null;
+			port = 0;
+			return false;
+		}
+
+		port = data [4] * 256 + data [5];
 
 		string[] arr = new string[4];
-		for (int i = 3; i >= 0; i --) {
-			arr [i] = "" + (id % 256);
-			id /= 256;
+		for (int i = 0; i < 4; i ++) {
+			arr [i] = "" + data[i];
 		}
 		host = String.Join(".", arr);
-		return arr[0] != "0" && id == 0;
+		return arr[0] != "0";
 	}
 }
