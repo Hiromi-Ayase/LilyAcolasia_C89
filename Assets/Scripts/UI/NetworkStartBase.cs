@@ -13,7 +13,10 @@ public class NetworkStartBase : MonoBehaviour
 	public GameObject menuMain;
 	public Text statusText;
 	public InputField input;
-	public Digit eFieldId; 
+	public Digit eFieldId;
+	public Digit eFieldIdClient;
+	public bool isClient = false;
+	public AddressInputField addressInputField;
 
 	void Start ()
 	{

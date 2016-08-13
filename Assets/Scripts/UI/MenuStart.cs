@@ -8,6 +8,7 @@ public class MenuStart : MonoBehaviour {
     public SpriteRenderer menuStartRenderer;
     public SpriteRenderer menuMainRenderer;
     public AudioClip soundSelect;
+	public AudioClip soundCancel;
 
     public Digit warfareWin;
     public Digit warfareLost;
@@ -19,10 +20,12 @@ public class MenuStart : MonoBehaviour {
 	public Digit humanLost;
 	public Digit humanDraw;
     public GameObject menuMain;
+	public AudioClip bgm;
 
     private int frameCount = 0;
     private double duration = 15;
     private AudioSource audioSource;
+	private AudioSource bgmSource;
 
     /// <summary>
     /// 0:init 1:init->main 2:main 3:main->game
@@ -32,7 +35,12 @@ public class MenuStart : MonoBehaviour {
 	void Start () {
         menuStartRenderer.color = new Color(1f, 1f, 1f, 1f);
         menuMain.SetActive(false);
-        this.audioSource = GetComponent<AudioSource>();
+        this.audioSource = GetComponents<AudioSource>()[0];
+		this.bgmSource = GetComponents<AudioSource> () [1];
+
+		this.bgmSource.loop = true;
+		this.bgmSource.clip = bgm;
+		this.bgmSource.Play();
     }
 
     void OnClick()
@@ -51,8 +59,7 @@ public class MenuStart : MonoBehaviour {
             {
                 menuStartRenderer.color = new Color(0, 0, 0, 1f);
                 state = 1;
-                this.audioSource.clip = soundSelect;
-                this.audioSource.Play();
+				seSelect ();
             }
         }
         else if (this.state == 1)
@@ -79,4 +86,14 @@ public class MenuStart : MonoBehaviour {
             }
         }
     }
+
+	public void seSelect() {
+		this.audioSource.clip = soundSelect;
+		this.audioSource.Play ();
+	}
+
+	public void seCancel() {
+		this.audioSource.clip = soundCancel;
+		this.audioSource.Play();
+	}
 }

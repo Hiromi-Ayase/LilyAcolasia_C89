@@ -22,26 +22,42 @@ public class GameEffect : MonoBehaviour {
     public Sprite gameEndLose;
     public Sprite gameEndWin;
     public Sprite gameEndDraw;
+	public Sprite unlocked_1;
+	public Sprite unlocked_5;
+	public Sprite unlocked_20;
+	public Sprite unlocked_50;
+	public Sprite unlocked_concolor;
+	public Sprite unlocked_equiv;
+	public Sprite unlocked_draw;
+	public Sprite unlocked_perfect;
+	public AudioClip soundAllSet;
 
     public GameObject cutIn;
     public GameObject special;
     public GameObject special9;
     public GameObject roundEnd;
     public GameObject gameEnd;
+	public GameObject achievement;
 
     public SpriteRenderer cutInRenderer;
     public SpriteRenderer specialRenderer;
     public SpriteRenderer special9Renderer;
     public SpriteRenderer roundEndRenderer;
     public SpriteRenderer gameEndRenderer;
+	public SpriteRenderer achievementRenderer;
+
+	public Achievements achievements;
 
 	private List<SpriteRenderer> fields;
-    private static GameEffect instance;
-    private bool isCutIn = false;
+	private static GameEffect instance;
+	private int achievementState = 0;
+	private bool isCutIn = false;
 	private bool isRoundEnd = false;
     private bool isGameEnd = false;
     private int frameCounter = 0;
 	private int blinkCounter = 0;
+	private int achievementFrame = 0;
+	private AudioSource audioSource;
 
 	private static int stateSpecial = 0;
 	private static GameObject sp;
@@ -49,7 +65,10 @@ public class GameEffect : MonoBehaviour {
 
     private const int CUTIN_SPEED1 = 3;
     private const int CUTIN_SPEED2 = 100;
-    private const int CUTIN_LEFT = -1000;
+	private const int CUTIN_LEFT = -1000;
+	private const int ACHIEVEMENT_BOTTOM = 3700;
+	private const int ACHIEVEMENT_TOP = 5300;
+	private const int ACHIEVEMENT_WAIT = 200;
     private const int ROUND_END1 = 4000;
     private const int ROUND_END2 = 2000;
 	private const int BLINK = 30;
@@ -66,9 +85,34 @@ public class GameEffect : MonoBehaviour {
 		foreach (Transform child in GameObject.Find("FieldWrapper").GetComponentInChildren<Transform>()) {
 			fields.Add (child.GetComponent<SpriteRenderer>());
 		}
+		audioSource = GetComponent<AudioSource> ();
 	}
 	
 	void Update () {
+
+		if (this.achievementState == 1) {
+			this.achievement.transform.localPosition -= new Vector3 (0, 150, 0);
+			if (this.achievement.transform.localPosition.y < ACHIEVEMENT_BOTTOM) {
+				this.achievementState = 2;
+				this.achievementFrame = 0;
+			}
+		} else if (this.achievementState == 2) {
+			this.achievementFrame++;
+			if (this.achievementFrame > ACHIEVEMENT_WAIT) {
+				this.achievementState = 3;
+			}
+		} else if (this.achievementState == 3) {
+			this.achievement.transform.localPosition += new Vector3 (0, 150, 0);
+			if (this.achievement.transform.localPosition.y > ACHIEVEMENT_TOP) {
+				this.achievementState = 0;
+			}
+		} else if (this.achievements.Events.Count > 0) {
+			int id = this.achievements.Events.Peek();
+			if (GameEffect.Achievement (id)) {
+				this.achievements.Events.Dequeue ();
+			}
+		}
+
         if (this.isCutIn)
         {
             float rate = (float)Math.Abs(this.cutIn.transform.position.x) / Math.Abs(CUTIN_LEFT);
@@ -125,8 +169,27 @@ public class GameEffect : MonoBehaviour {
 
 		if (fields != null && !this.isCutIn && !this.isRoundEnd && !this.isGameEnd) {
 			this.blinkCounter++;
-			float alpha = (float)Math.Sin((double)this.blinkCounter / BLINK) / 4 + 0.75f;
 			foreach (SpriteRenderer sr in fields) {
+				double phase = 0;
+				switch (sr.sprite.name) {
+				case "area_black":
+					phase = 0;
+					break;
+				case "area_blue":
+					phase = 1;
+					break;
+				case "area_green":
+					phase = 2;
+					break;
+				case "area_red":
+					phase = 3;
+					break;
+				case "area_white":
+					phase = 4;
+					break;
+				}
+
+				float alpha = (float)Math.Sin((double)this.blinkCounter / BLINK + phase * Math.PI * 2 / 5) / 4 + 0.75f;
 				var color = sr.color;
 				color.a = alpha;
 				sr.color = color;
@@ -205,6 +268,40 @@ public class GameEffect : MonoBehaviour {
         instance.isCutIn = true;
     }
 
+	public static bool Achievement(int n) {
+		if (instance.achievementState == 0) {
+			if (n == Achievements.CONCOLOR) {
+				instance.achievementRenderer.sprite = instance.unlocked_concolor;
+			} else if (n == Achievements.DRAW) {
+				instance.achievementRenderer.sprite = instance.unlocked_draw;
+			} else if (n == Achievements.EQUIV) {
+				instance.achievementRenderer.sprite = instance.unlocked_equiv;
+			} else if (n == Achievements.PERFECT) {
+				instance.achievementRenderer.sprite = instance.unlocked_perfect;
+			} else if (n == Achievements.HUMAN_1) {
+				instance.achievementRenderer.sprite = instance.unlocked_1;
+			} else if (n == Achievements.HUMAN_5) {
+				instance.achievementRenderer.sprite = instance.unlocked_5;
+			} else if (n == Achievements.HUMAN_20) {
+				instance.achievementRenderer.sprite = instance.unlocked_20;
+			} else if (n == Achievements.HUMAN_50) {
+				instance.achievementRenderer.sprite = instance.unlocked_50;
+			} else if (n == Achievements.WARFARE_1) {
+				instance.achievementRenderer.sprite = instance.unlocked_1;
+			} else if (n == Achievements.WARFARE_5) {
+				instance.achievementRenderer.sprite = instance.unlocked_5;
+			} else if (n == Achievements.WARFARE_20) {
+				instance.achievementRenderer.sprite = instance.unlocked_concolor;
+			} else if (n == Achievements.WARFARE_50) {
+				instance.achievementRenderer.sprite = instance.unlocked_50;
+			}
+			instance.achievementState = 1;
+			return true;
+		} else {
+			return false;
+		}
+	}
+
     public static void Special(int n, int turn)
     {
         Sprite sprite = null;
@@ -244,6 +341,8 @@ public class GameEffect : MonoBehaviour {
 			if (instance.special9Renderer.sprite != instance.skill9ActiveYour) {
 				setSpecial (instance.special9);
 				instance.special9Renderer.sprite = instance.skill9ActiveYour;
+				instance.audioSource.clip = instance.soundAllSet;
+				instance.audioSource.Play ();
 			}
         }
         else
@@ -251,6 +350,8 @@ public class GameEffect : MonoBehaviour {
 			if (instance.special9Renderer.sprite != instance.skill9ActiveEnemy) {
 				setSpecial (instance.special9);
 				instance.special9Renderer.sprite = instance.skill9ActiveEnemy;
+				instance.audioSource.clip = instance.soundAllSet;
+				instance.audioSource.Play ();
 			}
         }
     }

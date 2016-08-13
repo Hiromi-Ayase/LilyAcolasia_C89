@@ -3,18 +3,14 @@ using System.Collections;
 
 public class MenuItemNetwork : MonoBehaviour {
 
-	public AudioClip soundSelect;
-	private AudioSource audioSource;
-
 	public GameObject menu;
 	public GameObject networkMenu;
+	public MenuStart ms;
 
 	void Start () {
-		this.audioSource = GetComponent<AudioSource>();
 	}
 	void OnMouseDown() {
-		this.audioSource.clip = soundSelect;
-		this.audioSource.Play();
+		ms.seSelect ();
 		this.networkMenu.SetActive(true);
 		this.menu.SetActive (false);
 	}

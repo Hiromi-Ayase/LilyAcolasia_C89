@@ -19,7 +19,6 @@ namespace LilyAcolasia
         public const string DECK_NORTH_FIELD = "NorthField";
         public const string DECK_SOUTH_FIELD = "SouthField";
 
-        public const int CARD9_TRASHED = 1;
         public const int CARD9_AFFECTED = 2;
         public const int CARD9_NONE = 0;
     }
@@ -236,7 +235,7 @@ namespace LilyAcolasia
             }
             else if (this.power == 9)
             {
-                game.Card9 = Constants.CARD9_TRASHED;
+				game.Card9[(game.Turn + 1) % 2] = Constants.CARD9_AFFECTED;
             }
             return ret;
         }
@@ -933,7 +932,7 @@ namespace LilyAcolasia
 		private readonly bool rev;
 
         private int turn;
-        private int card9;
+		private int[] card9 = {Constants.CARD9_NONE, Constants.CARD9_NONE};
         private Card lastTrashed = null;
         private Field lastTrashedField = null;
 
@@ -963,7 +962,6 @@ namespace LilyAcolasia
 			this.turn = (random.Next() + (rev ? 1 : 0)) % PLAYER_NUM;
             this.lastTrashed = null;
             this.lastTrashedField = null;
-            this.card9 = Constants.CARD9_NONE;
 
             for (int i = 0; i < FIELD_NUM; i++)
             {
@@ -1003,8 +1001,8 @@ namespace LilyAcolasia
             {
                 throw GameException.getNotTrashedException();
             }
+			this.card9 [this.turn] = Constants.CARD9_NONE;
             this.turn = (this.turn + 1) % 2;
-            this.card9 = this.card9 == Constants.CARD9_TRASHED ? Constants.CARD9_AFFECTED : Constants.CARD9_NONE;
             this.lastTrashedField = null;
             this.lastTrashed = null;
 
@@ -1043,7 +1041,7 @@ namespace LilyAcolasia
         /// <summary>
         /// Card9 flg.
         /// </summary>
-        public int Card9 { set { this.card9 = value; } get { return this.card9; } }
+		public int[] Card9 { get { return this.card9; } }
         /// <summary>
         /// Last trashed card.
         /// </summary>
@@ -1158,7 +1156,7 @@ namespace LilyAcolasia
             {
                 status.Current = GameStatus.Status.End;
             }
-            else if (this.card9 == Constants.CARD9_AFFECTED)
+            else if (this.card9[turn] == Constants.CARD9_AFFECTED)
             {
                 status.Current = GameStatus.Status.Trashed;
             }

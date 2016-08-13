@@ -150,6 +150,7 @@ namespace LilyAcolasia
                 enemyName = m[2];
                 send(HEADER, name);
             }
+			Debug.Log ("Enemy connected: " + enemyName);
             return true;
         }
 

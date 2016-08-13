@@ -36,8 +36,16 @@ public class GameMaster : MonoBehaviour
     public AudioClip soundSkillLink;
     public AudioClip soundSkillColor;
     public AudioClip soundSkillSnipe;
-    public AudioClip soundJudge;
-    public AudioClip bgm;
+	public AudioClip soundJudge;
+	public AudioClip soundGameWin;
+	public AudioClip soundGameLost;
+	public AudioClip soundGameDraw;
+	public AudioClip soundAllSet;
+
+	public AudioClip bgm1;
+	public AudioClip bgm2;
+
+	public Achievements achievements;
 
     private GameObject talon;
     private GameObject trash;
@@ -108,7 +116,7 @@ public class GameMaster : MonoBehaviour
 		int isOnline = PlayerPrefs.GetInt ("network", 0);
 		Debug.Log ("isOnline" + isOnline);
 
-		if (isOnline != 0 && this.netuser != null) {
+		if (isOnline != 0 && NetworkStart.user != null) {
 			this.netuser = NetworkStart.user;
 			if (this.netuser.IsServer) {
 				rev = true;
@@ -138,8 +146,10 @@ public class GameMaster : MonoBehaviour
         this.colorChoice.SetActive(false);
         Init();
         this.bgmSource.loop = true;
-        this.bgmSource.clip = bgm;
+		this.bgmSource.clip = this.gameOperator.Round.Current.Turn == USER_TURN ? bgm1 : bgm2;
         this.bgmSource.Play();
+		//GameEffect.Special(5, 1);
+		//GameEffect.Achievement(1);
     }
 
 
@@ -190,39 +200,60 @@ public class GameMaster : MonoBehaviour
                 {
                     this.currentGameState = GameState.GameEnd;
                     var round = this.gameOperator.Round;
-					string key;
-					if (level == 4) {
-						key = "warfare";
-					} else if (level == 1) {
-						key = "mimic";
-					} else if (level == 0) {
-						key = "human";
-					} else {
-						key = "Enemy";
-					}
-                    int score;
-                    if (round.Point1 > round.Point2)
+
+					if (round.Point1 > round.Point2)
                     {
-                        key += "Lost";
-                        score = PlayerPrefs.GetInt(key, 0);
-                        GameEffect.GameEnd(0);
+						if (level == 4) {
+							achievements.WarfareLost ();
+						} else if (level == 1) {
+							achievements.MimicLost();
+						} else if (level == 0) {
+							achievements.HumanLost();
+						}
+
+						GameEffect.GameEnd(0);
+						audioSource.clip = soundGameLost;
+						audioSource.Play();
                     }
                     else if (round.Point1 < round.Point2)
                     {
-                        key += "Win";
-                        score = PlayerPrefs.GetInt(key, 0);
-                        GameEffect.GameEnd(1);
+						if (level == 4) {
+							achievements.WarfareWin ();
+						} else if (level == 1) {
+							achievements.MimicWin();
+						} else if (level == 0) {
+							achievements.HumanWin();
+						}
+
+						bool isPerfect = true;
+						foreach (LilyAcolasia.Field f in game.Fields) {
+							if (f.Winner != USER_TURN) {
+								isPerfect = false;
+								break;
+							}
+						}
+						if (isPerfect) {
+							achievements.Perfect ();
+						}
+
+						GameEffect.GameEnd(1);
+						audioSource.clip = soundGameWin;
+						audioSource.Play();
                     }
                     else
                     {
-                        key += "Draw";
-                        score = PlayerPrefs.GetInt(key, 0);
+						if (level == 4) {
+							achievements.WarfareDraw ();
+						} else if (level == 1) {
+							achievements.MimicDraw();
+						} else if (level == 0) {
+							achievements.HumanDraw();
+						}
+
                         GameEffect.GameEnd(2);
+						audioSource.clip = soundGameDraw;
+						audioSource.Play();
                     }
-                    score++;
-                    Debug.Log(key + ":" + score);
-                    PlayerPrefs.SetInt(key, score);
-                    PlayerPrefs.Save();
                 }
             }
         }
@@ -407,7 +438,18 @@ public class GameMaster : MonoBehaviour
             }
             if (beforeSprite == null && this.statusField[i].sprite != null)
             {
-                this.statusField[i].transform.localScale = new Vector3(3000, 3000, 1);
+				if (game.Fields [i].Winner == USER_TURN) {
+					var deck = game.Fields [i].CardList [USER_TURN];
+					if (deck [0].Color == deck [1].Color && deck [1].Color == deck [2].Color) {
+						achievements.Concolor ();
+					}
+					else if (deck[0].Power == deck[1].Power && deck[1].Power == deck[2].Power)
+					{
+						achievements.Equiv ();
+					}
+				}
+
+				this.statusField[i].transform.localScale = new Vector3(3000, 3000, 1);
                 audioSource.clip = soundJudge;
                 audioSource.Play();
             }
@@ -476,11 +518,11 @@ public class GameMaster : MonoBehaviour
 			GameEffect.Special9 (-1);
 			this.lastTurn = game.Turn;
 		}
-        if (game.Card9 == LilyAcolasia.Constants.CARD9_AFFECTED)
+		if (game.Card9[game.Turn] == LilyAcolasia.Constants.CARD9_AFFECTED)
         {
-            if (game.Status != LilyAcolasia.GameStatus.Status.First && game.Status != LilyAcolasia.GameStatus.Status.WaitSpecialInput) {
-                GameEffect.Special9(game.Turn);
-            }
+			if (game.Status != LilyAcolasia.GameStatus.Status.First && game.Status != LilyAcolasia.GameStatus.Status.WaitSpecialInput) {
+				GameEffect.Special9 (game.Turn);
+			}
 
             if (game.Player.Hand.Count() == 3)
             {

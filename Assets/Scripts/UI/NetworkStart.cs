@@ -12,6 +12,7 @@ public class NetworkStart : MonoBehaviour {
 
 	public static LilyAcolasia.NetworkUser user = null;
 	public NetworkStartBase net;
+	public MenuStart ms;
 
 	private int frameCount = 0;
 
@@ -73,43 +74,54 @@ public class NetworkStart : MonoBehaviour {
 
 	void OnMouseDown()
 	{
+		net.statusText.text = "";
 		if (this.name == "menu_item_network_create") {
-			net.input.text = "127.0.0.1";
+			net.input.text = "";
 			net.menuNet.SetActive (false);
 			net.networkUI.SetActive (true);
 			net.menuCreate.SetActive (true);
+			net.isClient = false;
+			ms.seSelect ();
 		} else if (this.name == "menu_item_network_join") {
 			net.input.text = "";
+			net.isClient = true;
 			net.menuNet.SetActive (false);
 			net.menuJoin.SetActive (true);
 			net.networkUI.SetActive (true);
+			ms.seSelect ();
 		} else if (this.name == "menu_item_back_join") {
 			close ();
 			net.menuNet.SetActive (true);
 			net.menuJoin.SetActive (false);
 			net.networkUI.SetActive (false);
+			net.input.text = "";
+			ms.seCancel ();
 		} else if (this.name == "menu_item_back_create") {
 			net.menuNet.SetActive (true);
 			net.menuCreate.SetActive (false);
 			net.networkUI.SetActive (false);
+			ms.seCancel ();
 		} else if (this.name == "menu_item_back_create2") {
 			close ();
 			net.menuCreate.SetActive (true);
 			net.networkUI.SetActive (true);
 			net.menuCreate2.SetActive (false);
+			ms.seCancel ();
 		} else if (this.name == "menu_item_enter_create") {
 			enterServer ();
+			ms.seSelect ();
 		} else if (this.name == "menu_item_enter") {
 			enterClient ();
+			ms.seSelect ();
 		} else if (this.name == "menu_item_back_create") {
-			user.Close ();
-			user = null;
-			Debug.Log ("Server close.");
 			net.menuNet.SetActive (true);
 			net.menuCreate.SetActive (false);
+			net.input.text = "";
+			ms.seCancel ();
 		} else if (this.name == "menu_item_back") {
-			GameObject.Find("NetworkMenu").SetActive (false);
-			net.menuMain.SetActive(true);
+			GameObject.Find ("NetworkMenu").SetActive (false);
+			net.menuMain.SetActive (true);
+			ms.seCancel ();
 		}
 	}
 
@@ -117,7 +129,7 @@ public class NetworkStart : MonoBehaviour {
 		if (user != null) {
 			user.Close ();
 			user = null;
-			Debug.Log ("Client close.");
+			Debug.Log ("Connection close.");
 		}
 	}
 
@@ -125,7 +137,7 @@ public class NetworkStart : MonoBehaviour {
 		string host;
 		int port;
 
-		string id = net.input.text;
+		string id = net.eFieldIdClient.Text;
 
 		if (!decode (id, out host, out port)) {
 			net.statusText.text = "Invalid ID!";
@@ -138,7 +150,7 @@ public class NetworkStart : MonoBehaviour {
 	}
 
 	public void enterServer () {
-		Regex r = new Regex (@"^([\d\.]+)(:?:(\d+))?$");
+		Regex r = new Regex (@"^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})(?::(\d+))?$");
 		Match m = r.Match (net.input.text);
 
 		if (m.Groups.Count < 2) {
@@ -179,12 +191,15 @@ public class NetworkStart : MonoBehaviour {
 
 	private static bool decode (string id, out string host, out int port) {
 		
+		host = null;
+		port = 0;
 		byte[] data;
 		try {
 			data = Convert.FromBase64String (id);
 		} catch {
-			host = null;
-			port = 0;
+			return false;
+		}
+		if (data.Length < 6) { 
 			return false;
 		}
 
@@ -197,4 +212,5 @@ public class NetworkStart : MonoBehaviour {
 		host = String.Join(".", arr);
 		return arr[0] != "0";
 	}
+
 }
