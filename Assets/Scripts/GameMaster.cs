@@ -100,7 +100,7 @@ public class GameMaster : MonoBehaviour
     private const int AI_WAIT = 50;
     private const int TURN_WAIT = 50;
 	private const int GAME_ENDING_WAIT = 220;
-	private const int USER_TURN = 1;
+	private int USER_TURN = 1;
     private const int AI_TURN = 0;
     private int frameCounter = 0;
 
@@ -111,6 +111,7 @@ public class GameMaster : MonoBehaviour
     private GameState currentGameState;
 	private int lastTurn;
 	private int gameEndingState;
+	private LilyAcolasia_AI.AI demoAi;
 
     void Awake()
     {
@@ -133,6 +134,10 @@ public class GameMaster : MonoBehaviour
 				this.level = 1;
 			}
 			this.ai = new LilyAcolasia_AI.AI (this.level);
+
+			this.demoAi = new LilyAcolasia_AI.AI (4);
+			this.currentGameState = GameState.AIAction;
+
 			rand = new System.Random ().Next();
 		}
         Debug.Log("Level:" + level);
@@ -259,18 +264,27 @@ public class GameMaster : MonoBehaviour
 					audioSource.Play ();
 				}
 				this.currentGameState = GameState.GameEnd;
+				this.frameCounter = 0;
 			}
 		}
 		else if (this.currentGameState == GameState.GameEnd)
         {
-            if (!GameEffect.IsGameEnd && Input.GetMouseButtonDown(0))
+            if (!GameEffect.IsGameEnd)
             {
-                CameraFade.StartAlphaFade(Color.black, false, 0.5f, 0.5f, () =>
-                {
-					if (this.netuser != null)
-						this.netuser.Close ();
-                    SceneManager.LoadScene("Title");
-                });
+				if (Input.GetMouseButtonDown (0)) {
+					CameraFade.StartAlphaFade (Color.black, false, 0.5f, 0.5f, () => {
+						if (this.netuser != null)
+							this.netuser.Close ();
+						SceneManager.LoadScene ("Title");
+					});
+				} else if (demoAi != null) {
+					demoAi = null;
+					CameraFade.StartAlphaFade (Color.black, false, 0.5f, 0.5f, () => {
+						if (this.netuser != null)
+							this.netuser.Close ();
+						SceneManager.LoadScene ("Game");
+					});
+				}
             }
         }
         else if (this.currentGameState == GameState.CutIn)
@@ -281,7 +295,7 @@ public class GameMaster : MonoBehaviour
 
                 if (n == 5)
                 {
-                    if (game.Turn == USER_TURN)
+                    if (demoAi != null && game.Turn == USER_TURN)
                     {
                         this.currentGameState = GameState.ColorChoice;
                         ColorChoice.Show((color) =>
@@ -301,12 +315,12 @@ public class GameMaster : MonoBehaviour
                 }
                 else if (n == 9)
                 {
-                    this.currentGameState = turn == USER_TURN ? GameState.UserAction : GameState.AIAction;
+					this.currentGameState = demoAi == null && turn == USER_TURN ? GameState.UserAction : GameState.AIAction;
                 }
                 else
                 {
                     GameEffect.Special(n, game.Turn);
-                    this.currentGameState = turn == USER_TURN ? GameState.UserAction : GameState.AIAction;
+					this.currentGameState = demoAi == null && turn == USER_TURN ? GameState.UserAction : GameState.AIAction;
                 }
                 this.frameCounter = 0;
             }
@@ -324,7 +338,7 @@ public class GameMaster : MonoBehaviour
             if (this.frameCounter >= TURN_WAIT)
             {
                 this.frameCounter = 0;
-                this.currentGameState = turn == USER_TURN ? GameState.UserAction : GameState.AIAction;
+				this.currentGameState = demoAi == null && turn == USER_TURN ? GameState.UserAction : GameState.AIAction;
             }
         }
         else if (this.currentGameState == GameState.CmdWait)
@@ -357,18 +371,39 @@ public class GameMaster : MonoBehaviour
                 }
                 else
                 {
-                    this.currentGameState = turn == USER_TURN ? GameState.UserAction : GameState.AIAction;
+					this.currentGameState = demoAi == null &&  turn == USER_TURN ? GameState.UserAction : GameState.AIAction;
                 }
             }
         }
         else if (this.currentGameState == GameState.UserAction)
         {
-            if (game.Status == LilyAcolasia.GameStatus.Status.WaitSpecialInput && !game.LastTrashed.HasSpecialInput)
-            {
-                this.currentGameState = GameState.CmdWait;
-                this.frameCounter = 0;
-                GameEffect.Special(game.LastTrashed.Power, game.Turn);
-            }
+			if (this.demoAi != null) {
+				if (game.Status != LilyAcolasia.GameStatus.Status.WaitSpecialInput || this.frameCounter >= AI_WAIT)
+				{
+					this.frameCounter = 0;
+
+					var next = demoAi.next (game);
+					input.input (next.Item1, next.Item2, next.Item3.ToString());
+
+					this.gameEnumerator.MoveNext();
+					this.frameCounter = 0;
+					this.currentGameState = GameState.CmdWait;
+					GameEffect.Special(-1, game.Turn);
+					if (game.Status == LilyAcolasia.GameStatus.Status.WaitSpecialInput)
+					{
+						GameEffect.CutIn(game.LastTrashed.Power);
+						audioSource.clip = soundCutIn;
+						audioSource.Play();
+						this.currentGameState = GameState.CutIn;
+					}
+				}
+			} else {
+				if (game.Status == LilyAcolasia.GameStatus.Status.WaitSpecialInput && !game.LastTrashed.HasSpecialInput) {
+					this.currentGameState = GameState.CmdWait;
+					this.frameCounter = 0;
+					GameEffect.Special (game.LastTrashed.Power, game.Turn);
+				}
+			}
 
             this.frameCounter = 0;
         }
