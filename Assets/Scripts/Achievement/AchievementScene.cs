@@ -42,6 +42,7 @@ public class AchievementScene : MonoBehaviour {
 		audioSource = GetComponents<AudioSource> ();
 
 		this.audioSource[1].clip = bgm;
+		this.audioSource[1].loop = true;
 		this.audioSource[1].Play ();
 
 	}

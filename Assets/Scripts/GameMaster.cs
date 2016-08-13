@@ -92,13 +92,15 @@ public class GameMaster : MonoBehaviour
         TurnStart,
         RoundEnd,
         GameEnd,
+		GameEnding,
         CutIn,
     };
 
     private const int CMD_WAIT = 50;
     private const int AI_WAIT = 50;
     private const int TURN_WAIT = 50;
-    private const int USER_TURN = 1;
+	private const int GAME_ENDING_WAIT = 220;
+	private const int USER_TURN = 1;
     private const int AI_TURN = 0;
     private int frameCounter = 0;
 
@@ -108,6 +110,7 @@ public class GameMaster : MonoBehaviour
 
     private GameState currentGameState;
 	private int lastTurn;
+	private int gameEndingState;
 
     void Awake()
     {
@@ -188,41 +191,30 @@ public class GameMaster : MonoBehaviour
 
         this.frameCounter++;
 
-        if (this.currentGameState == GameState.RoundEnd)
-        {
-            if (!GameEffect.IsRoundEnd)
-            {
-                if (this.gameOperator.Round.HasNextRound())
-                {
-                    StartRound();
-                }
-                else
-                {
-                    this.currentGameState = GameState.GameEnd;
-                    var round = this.gameOperator.Round;
-
-					if (round.Point1 > round.Point2)
-                    {
+		if (this.currentGameState == GameState.RoundEnd) {
+			if (!GameEffect.IsRoundEnd) {
+				if (this.gameOperator.Round.HasNextRound ()) {
+					StartRound ();
+				} else {
+					this.currentGameState = GameState.GameEnding;
+					var round = this.gameOperator.Round;
+					this.frameCounter = 0;
+					if (round.Point1 > round.Point2) {
 						if (level == 4) {
 							achievements.WarfareLost ();
 						} else if (level == 1) {
-							achievements.MimicLost();
+							achievements.MimicLost ();
 						} else if (level == 0) {
-							achievements.HumanLost();
+							achievements.HumanLost ();
 						}
-
-						GameEffect.GameEnd(0);
-						audioSource.clip = soundGameLost;
-						audioSource.Play();
-                    }
-                    else if (round.Point1 < round.Point2)
-                    {
+						gameEndingState = 0;
+					} else if (round.Point1 < round.Point2) {
 						if (level == 4) {
 							achievements.WarfareWin ();
 						} else if (level == 1) {
-							achievements.MimicWin();
+							achievements.MimicWin ();
 						} else if (level == 0) {
-							achievements.HumanWin();
+							achievements.HumanWin ();
 						}
 
 						bool isPerfect = true;
@@ -236,30 +228,41 @@ public class GameMaster : MonoBehaviour
 							achievements.Perfect ();
 						}
 
-						GameEffect.GameEnd(1);
-						audioSource.clip = soundGameWin;
-						audioSource.Play();
-                    }
-                    else
-                    {
+						gameEndingState = 1;
+					} else {
 						if (level == 4) {
 							achievements.WarfareDraw ();
 						} else if (level == 1) {
-							achievements.MimicDraw();
+							achievements.MimicDraw ();
 						} else if (level == 0) {
-							achievements.HumanDraw();
+							achievements.HumanDraw ();
 						}
 
-                        GameEffect.GameEnd(2);
-						audioSource.clip = soundGameDraw;
-						audioSource.Play();
-                    }
-                }
-            }
-        }
-        else if (this.currentGameState == GameState.GameEnd)
+						gameEndingState = 2;
+					}
+				}
+			}
+		} else if (this.currentGameState == GameState.GameEnding) {
+			this.bgmSource.volume *= 0.95f;
+			if (frameCounter > GAME_ENDING_WAIT) {
+				if (gameEndingState == 0) {
+					GameEffect.GameEnd (0);
+					audioSource.clip = soundGameLost;
+					audioSource.Play ();
+				} else if (gameEndingState == 1) {
+					GameEffect.GameEnd (1);
+					audioSource.clip = soundGameWin;
+					audioSource.Play ();
+				} else if (gameEndingState == 2) {
+					GameEffect.GameEnd (2);
+					audioSource.clip = soundGameDraw;
+					audioSource.Play ();
+				}
+				this.currentGameState = GameState.GameEnd;
+			}
+		}
+		else if (this.currentGameState == GameState.GameEnd)
         {
-            this.bgmSource.volume *= 0.9f;
             if (!GameEffect.IsGameEnd && Input.GetMouseButtonDown(0))
             {
                 CameraFade.StartAlphaFade(Color.black, false, 0.5f, 0.5f, () =>
