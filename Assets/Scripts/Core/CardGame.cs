@@ -32,9 +32,9 @@ namespace LilyAcolasia
 		private const long B = 1000000007;
 		private long now;
 
-		public GameRandom(int seed)
+		public GameRandom(long seed)
 		{
-			this.now = seed;
+			this.now = seed % B;
 		}
 
 		/// <summary>
@@ -1482,7 +1482,7 @@ namespace LilyAcolasia
         /// <param name="name1">Player1 name.</param>
         /// <param name="name2">Player2 name.</param>
         /// <param name="observer">Observer.</param>
-		public GameOperator(IGameObserver observer, string name1, string name2, int seed, bool rev)
+		public GameOperator(IGameObserver observer, string name1, string name2, long seed, bool rev)
         {
             this.round = new GameRound(ROUND, name1, name2, new GameRandom(seed), rev);
             this.observer = observer;

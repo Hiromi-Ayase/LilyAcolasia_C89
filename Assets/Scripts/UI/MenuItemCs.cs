@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
 
-public class MenuItem : MonoBehaviour
+public class MenuItemCs : MonoBehaviour
 {
     public AudioClip soundSelect;
     private AudioSource audioSource;

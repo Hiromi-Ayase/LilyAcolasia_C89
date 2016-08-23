@@ -7,7 +7,7 @@ using System.Linq;
 
 
 
-public class GameMaster : MonoBehaviour
+public class GameMaster : Photon.MonoBehaviour
 {
     public GameObject cardPrefab;
     public Sprite areaWhite;
@@ -76,7 +76,7 @@ public class GameMaster : MonoBehaviour
     private Dictionary<String, DragUI> cardScripts = new Dictionary<String, DragUI>();
 
     private LilyAcolasia_AI.AI ai;
-	private LilyAcolasia.NetworkUser netuser;
+	private PhotonNetworkPlayer netuser;
     private int level;
 
     /// <summary>
@@ -115,7 +115,7 @@ public class GameMaster : MonoBehaviour
 
     void Awake()
     {
-		int rand;
+		long rand;
 		bool rev = false;
 		int isOnline = PlayerPrefs.GetInt ("network", 0);
 		Debug.Log ("isOnline" + isOnline);
@@ -135,7 +135,7 @@ public class GameMaster : MonoBehaviour
 			}
 			this.ai = new LilyAcolasia_AI.AI (this.level);
 
-			this.demoAi = new LilyAcolasia_AI.AI (4);
+			this.demoAi = null;//new LilyAcolasia_AI.AI (4);
 			this.currentGameState = GameState.AIAction;
 
 			rand = new System.Random ().Next();
@@ -164,10 +164,7 @@ public class GameMaster : MonoBehaviour
 	void OnApplicationQuit() {
 		if (this.netuser != null) {
 			this.netuser.Close ();
-			if (this.netuser.lt != null)
-				this.netuser.lt.Abort ();
-			if (this.netuser.rt != null)
-				this.netuser.rt.Abort ();
+			DestroyObject (this.netuser.gameObject);
 		}
 	}
 
@@ -273,15 +270,19 @@ public class GameMaster : MonoBehaviour
             {
 				if (Input.GetMouseButtonDown (0)) {
 					CameraFade.StartAlphaFade (Color.black, false, 0.5f, 0.5f, () => {
-						if (this.netuser != null)
+						if (this.netuser != null) {
 							this.netuser.Close ();
+							DestroyObject (this.netuser.gameObject);
+						}
 						SceneManager.LoadScene ("Title");
 					});
 				} else if (demoAi != null) {
 					demoAi = null;
 					CameraFade.StartAlphaFade (Color.black, false, 0.5f, 0.5f, () => {
-						if (this.netuser != null)
+						if (this.netuser != null) {
 							this.netuser.Close ();
+							DestroyObject (this.netuser.gameObject);
+						}
 						SceneManager.LoadScene ("Game");
 					});
 				}
@@ -417,6 +418,7 @@ public class GameMaster : MonoBehaviour
 					if (!netuser.IsConnected) {
 						GameEffect.GameEnd (3);
 						this.netuser.Close ();
+						DestroyObject (this.netuser.gameObject);
 						this.currentGameState = GameState.GameEnd;
 						return;
 					}
@@ -425,6 +427,7 @@ public class GameMaster : MonoBehaviour
 					if (next == null) {
 						GameEffect.GameEnd (3);
 						this.netuser.Close ();
+						DestroyObject (this.netuser.gameObject);
 						this.currentGameState = GameState.GameEnd;
 						return;
 					} else if (next == "") {
@@ -809,8 +812,8 @@ public class GameMaster : MonoBehaviour
 class GameObserverImpl : LilyAcolasia.IGameObserver
 {
     private readonly GameMaster master;
-	private readonly LilyAcolasia.NetworkUser user;
-	public GameObserverImpl(GameMaster master, LilyAcolasia.NetworkUser user)
+	private readonly PhotonNetworkPlayer user;
+	public GameObserverImpl(GameMaster master, PhotonNetworkPlayer user)
     {
         this.master = master;
 		this.user = user;

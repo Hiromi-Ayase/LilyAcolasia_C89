@@ -111,7 +111,7 @@ namespace LilyAcolasia
 			}
 		}
 
-        public int Rand
+		public int Rand
         {
             get { return this.rand; }
         }
@@ -223,8 +223,19 @@ namespace LilyAcolasia
             }
             catch
             {
-                return;
             }
+
+			try {
+				if (this.lt != null)
+					this.lt.Abort ();
+			} catch {
+			}
+
+			try {
+				if (this.rt != null)
+					this.rt.Abort ();
+			} catch {
+			}
         }
 
 
