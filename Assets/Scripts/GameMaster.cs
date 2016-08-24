@@ -296,7 +296,7 @@ public class GameMaster : Photon.MonoBehaviour
 
                 if (n == 5)
                 {
-                    if (demoAi != null && game.Turn == USER_TURN)
+                    if (demoAi == null && game.Turn == USER_TURN)
                     {
                         this.currentGameState = GameState.ColorChoice;
                         ColorChoice.Show((color) =>
