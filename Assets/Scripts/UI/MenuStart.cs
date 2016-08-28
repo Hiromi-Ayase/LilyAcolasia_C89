@@ -81,7 +81,6 @@ public class MenuStart : MonoBehaviour {
 				//humanLost.Number = PlayerPrefs.GetInt("humanLost", 0);
 				//humanDraw.Number = PlayerPrefs.GetInt("humanDraw", 0);
 
-                Debug.Log(warfareLost.Number);
                 this.state = 2;
             }
         }

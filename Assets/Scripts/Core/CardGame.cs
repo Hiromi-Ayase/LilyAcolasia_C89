@@ -44,7 +44,6 @@ namespace LilyAcolasia
 		public int Next()
 		{
 			now = now * A % B;
-			Debug.Log (now);
 			return (int)now;
 		}
     }
@@ -1076,7 +1075,7 @@ namespace LilyAcolasia
                         }
 
                         evals[eval]++;
-                        if (evals[eval] > Math.Floor((double)FIELD_NUM / 2 + 1))
+                        if (evals[eval] > Math.Floor((double)FIELD_NUM / 2))
                         {
                             return eval;
                         }

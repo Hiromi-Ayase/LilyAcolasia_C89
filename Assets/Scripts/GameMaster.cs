@@ -705,7 +705,7 @@ public class GameMaster : Photon.MonoBehaviour
 
         this.gameEnumerator.MoveNext();
         Debug.Log(gameOperator.Round.Current.ToString());
-        Debug.Log(gameOperator.Round.Current.Status);
+		Debug.Log(gameOperator.Round.Current.Status.ToString());
 
         GameEffect.Special(-1, gameOperator.Round.Current.Turn);
         if (this.gameOperator.Round.Current.Status == LilyAcolasia.GameStatus.Status.WaitSpecialInput)
